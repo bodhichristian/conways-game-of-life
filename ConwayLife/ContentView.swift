@@ -17,7 +17,7 @@ struct ContentView: View {
     
     let rows = 10
     let columns = 10
-    let spacing: CGFloat = 2
+    let spacing: CGFloat = 10
     
     private var gridItems: [GridItem] {
         Array(repeating: GridItem(.flexible(), spacing: spacing), count: rows)
@@ -32,7 +32,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            LazyVGrid(columns: gridItems) {
+            LazyVGrid(columns: gridItems, spacing: spacing) {
                 ForEach(gameBoard.flatMap { $0 }, id: \.id) { cell in
                     Rectangle()
                         .foregroundStyle(cell.alive ? .black : .secondary.opacity(0.5))
